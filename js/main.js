@@ -168,14 +168,13 @@ if (location.pathname.includes("/searchMeal.html")) {
   sLettInp.addEventListener("input", () => {
     if (sLettInp.value !== "") {
       searchByletter(sLettInp.value);
-  });
+  };
+})
 }
-
 // www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata
 //www.themealdb.com/api/json/v1/1/search.php?f=a
 
-async function searchByName(ele) {
-  
+async function searchByName(ele) {  
   try {
     let res = await fetch(
       `https://www.themealdb.com/api/json/v1/1/search.php?s=${ele}`
@@ -630,3 +629,4 @@ function updateSubmitButtonState() {
 if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
   window.location.href = "../index.html";
 }
+
