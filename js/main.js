@@ -148,7 +148,7 @@ function displayCategoryMeals(arr) {
   for (let i = 0; i < meals.length; i++) {
     meals[i].addEventListener("click", () => {
       localStorage.setItem("mealId", meals[i].getAttribute("id"));
-      location.pathname = "./mealDetails.html";                    /// --------------------->>>>>>>>>
+      location.pathname = "/mealDetails.html";                    /// --------------------->>>>>>>>>
       // displayMealData()
     });
   }
@@ -292,7 +292,6 @@ async function displayMealData() {
       )}`
     );
     let data = await res.json();
-    console.log(data.meals);
     displayMealDetails(data.meals);
   } catch (error) {
     console.log(error);
@@ -306,7 +305,6 @@ function displayMealDetails(arr) {
   let x = ``;
   for (let i = 0; i < arr.length; i++) {
     let m = arr[i]?.strTags || "";
-    console.log(m);
 
     let tgs = m && m.trim() !== "" ? m.split(",") : [];
 
@@ -541,7 +539,7 @@ function displayGradients(arr) {
         "allGradient",
         allgradient[i].querySelector(".gradient .inner h1").innerHTML
       );
-      location.pathname = "./gradientsMeals.html";  ///---------------------    >>>>>>>>      
+      location.pathname = "/gradientsMeals.html";  ///---------------------    >>>>>>>>      
     });
   }
 }
