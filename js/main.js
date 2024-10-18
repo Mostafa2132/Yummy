@@ -148,7 +148,7 @@ function displayCategoryMeals(arr) {
   for (let i = 0; i < meals.length; i++) {
     meals[i].addEventListener("click", () => {
       localStorage.setItem("mealId", meals[i].getAttribute("id"));
-      location.pathname = "../mealDetails.html";
+      location.pathname = "/mealDetails.html";                    /// --------------------->>>>>>>>>
       // displayMealData()
     });
   }
