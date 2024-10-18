@@ -1,9 +1,6 @@
 /// <reference types="../@types/jquery" />
 
 // side bar
-window.onload = function(){
-  // randomMeals()
-}
 
 let sideInnerWidth = $(".side-inner").innerWidth();
 
@@ -40,12 +37,15 @@ $(".fa-close").click(function () {
 
 // api for categories
 async function categories() {
-  let res = await fetch(
-    "https://www.themealdb.com/api/json/v1/1/categories.php"
-  );
-  let data = await res.json();
-
-  displayCategory(data.categories);
+  try {
+    let res = await fetch(
+      "https://www.themealdb.com/api/json/v1/1/categories.php"
+    );
+    let data = await res.json();
+    displayCategory(data.categories);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 if (location.pathname.includes("/Categories.html")) {
@@ -88,17 +88,19 @@ function displayCategory(arr) {
 }
 
 async function categoryMeals() {
-  let res = await fetch(
-    `https://www.themealdb.com/api/json/v1/1/filter.php?c=${localStorage.getItem(
-      "categoryName"
-    )}`
-  );
-  let data = await res.json();
-  let x = data.meals;
-
-  const items = x.slice(0, 20);
-  //  عشان اعرض وصفات الكاتي
-  displayCategoryMeals(items);
+  try {
+    let res = await fetch(
+      `https://www.themealdb.com/api/json/v1/1/filter.php?c=${localStorage.getItem(
+        "categoryName"
+      )}`
+    );
+    let data = await res.json();
+    let x = data.meals;
+    const items = x.slice(0, 20);
+    displayCategoryMeals(items);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 if (location.pathname.includes("/displayCategoryMeals.html")) {
@@ -159,22 +161,13 @@ const sLettInp = document.querySelector("#sLettInp");
 
 if (location.pathname.includes("/searchMeal.html")) {
   sNameInp.addEventListener("input", () => {
-    if (sLettInp.length !== "") {
+    if (sNameInp.value !== "") {
       searchByName(sNameInp.value);
     }
   });
   sLettInp.addEventListener("input", () => {
-    if (sLettInp.length !== "") {
-      document.addEventListener("DOMContentLoaded", () => {
-        $(".sk-chase").slideUp(2000, function () {
-          $(".loading").fadeOut(1200, function () {
-            $("body").css("overflow", "visible");
-            $(".loading").remove();
-          });
-        });
-      });
+    if (sLettInp.value !== "") {
       searchByletter(sLettInp.value);
-    }
   });
 }
 
@@ -182,26 +175,43 @@ if (location.pathname.includes("/searchMeal.html")) {
 //www.themealdb.com/api/json/v1/1/search.php?f=a
 
 async function searchByName(ele) {
-  let res = await fetch(
-    `https://www.themealdb.com/api/json/v1/1/search.php?s=${ele}`
-  );
-  let data = await res.json();
-  displayCategoryMeals(data.meals);
+  
+  try {
+    let res = await fetch(
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=${ele}`
+    );
+    let data = await res.json();
+    displayCategoryMeals(data.meals);
+  } catch (error) {
+    console.log(error);
+    
+  }
 }
+
 async function searchByletter(e) {
-  let res = await fetch(
-    `https://www.themealdb.com/api/json/v1/1/search.php?f=${e}`
-  );
-  let data = await res.json();
-  displayCategoryMeals(data.meals);
+  try {
+    let res = await fetch(
+      `https://www.themealdb.com/api/json/v1/1/search.php?f=${e}`
+    );
+    let data = await res.json();
+    displayCategoryMeals(data.meals);
+  } catch (error) {
+    console.log(error);
+     
+  }
 }
 
 async function randomMeals() {
-  let res = await fetch(
-    `https://www.themealdb.com/api/json/v1/1/search.php?s=`
-  );
-  let data = await res.json();
-  displayCategoryMeals(data.meals);
+  try {
+    let res = await fetch(
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=`
+    );
+    let data = await res.json();
+    displayCategoryMeals(data.meals);
+  } catch (error) {
+    console.log(error);
+    
+  }
 }
 
 if (location.pathname.includes("/index.html")) {
@@ -213,12 +223,16 @@ if (location.pathname.includes("/index.html")) {
 //www.themealdb.com/api/json/v1/1/list.php?i=list
 
 async function showAreas() {
-  let res = await fetch(
-    `https://www.themealdb.com/api/json/v1/1/list.php?a=list`
-  );
-  let data = await res.json();
-  // console.log(data.meals);
-  displayAreas(data.meals);
+  try {
+    let res = await fetch(
+      `https://www.themealdb.com/api/json/v1/1/list.php?a=list`
+    );
+    let data = await res.json();
+    displayAreas(data.meals);
+  } catch (error) {
+    console.log(error);
+    
+  }
 }
 if (location.pathname.includes("/area.html")) {
   showAreas();
@@ -252,14 +266,17 @@ function displayAreas(arr) {
 //www.themealdb.com/api/json/v1/1/filter.php?a=Canadian
 
 async function areasMeals() {
-  let res = await fetch(
-    `https://www.themealdb.com/api/json/v1/1/filter.php?a=${localStorage.getItem(
-      "areaName"
-    )}`
-  );
-  let data = await res.json();
-  console.log(data);
-  displayCategoryMeals(data.meals);
+  try {
+    let res = await fetch(
+      `https://www.themealdb.com/api/json/v1/1/filter.php?a=${localStorage.getItem(
+        "areaName"
+      )}`
+    );
+    let data = await res.json();
+    displayCategoryMeals(data.meals);
+  } catch (error) {
+      console.log(error); 
+  }
 }
 
 if (location.pathname.includes("/areasMeals.html")) {
@@ -478,13 +495,17 @@ function displayMealDetails(arr) {
 // www.themealdb.com/api/json/v1/1/list.php?i=list
 
 async function gradients() {
-  let res = await fetch(
-    `https://www.themealdb.com/api/json/v1/1/list.php?i=list`
-  );
-  let data = await res.json();
-  console.log(data);
-  const targetMeals = data.meals.slice(0, 20);
-  displayGradients(targetMeals);
+  try {
+    let res = await fetch(
+      `https://www.themealdb.com/api/json/v1/1/list.php?i=list`
+    );
+    let data = await res.json();
+    console.log(data);
+    const targetMeals = data.meals.slice(0, 20);
+    displayGradients(targetMeals);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 if (location.pathname.includes("/gradients.html")) {
@@ -527,14 +548,19 @@ function displayGradients(arr) {
 }
 
 async function allgradient() {
-  let res = await fetch(
-    `https://www.themealdb.com/api/json/v1/1/filter.php?i=${localStorage.getItem(
-      "allGradient"
-    )}`
-  );
-  let data = await res.json();
-
-  displayCategoryMeals(data.meals);
+  try {
+    let res = await fetch(
+      `https://www.themealdb.com/api/json/v1/1/filter.php?i=${localStorage.getItem(
+        "allGradient"
+      )}`
+    );
+    let data = await res.json();
+  
+    displayCategoryMeals(data.meals);
+  } catch (error) {
+    console.log(error);
+    
+  }
 }
 if (location.pathname.includes("/gradientsMeals.html")) {
   allgradient();
@@ -599,4 +625,8 @@ function updateSubmitButtonState() {
   } else {
     subBtn.setAttribute("disabled", true);
   }
+}
+
+if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
+  window.location.href = "../index.html";
 }
