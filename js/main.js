@@ -148,7 +148,7 @@ function displayCategoryMeals(arr) {
   for (let i = 0; i < meals.length; i++) {
     meals[i].addEventListener("click", () => {
       localStorage.setItem("mealId", meals[i].getAttribute("id"));
-      location.pathname = "/mealDetails.html";                    /// --------------------->>>>>>>>>
+      location.pathname = "./mealDetails.html";                    /// --------------------->>>>>>>>>
       // displayMealData()
     });
   }
@@ -541,7 +541,7 @@ function displayGradients(arr) {
         "allGradient",
         allgradient[i].querySelector(".gradient .inner h1").innerHTML
       );
-      location.pathname = "../gradientsMeals.html";
+      location.pathname = "./gradientsMeals.html";  ///---------------------    >>>>>>>>      
     });
   }
 }
@@ -627,6 +627,6 @@ function updateSubmitButtonState() {
 }
 
 if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
-  window.location.href = "../index.html";
+  window.location.href = "/index.html";                              //---------------------->>>>>>>.
 }
 
