@@ -213,7 +213,7 @@ async function randomMeals() {
   }
 }
 
-if (location.pathname.includes("../index.html")) {
+if (location.pathname.includes("./index.html")) {
   randomMeals();
 }
 
@@ -625,6 +625,6 @@ function updateSubmitButtonState() {
 }
 
 if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
-  window.location.href = "../index.html";                              //---------------------->>>>>>>.
+  window.location.href = "./index.html";                              //---------------------->>>>>>>.
 }
 
