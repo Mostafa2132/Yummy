@@ -213,7 +213,7 @@ async function randomMeals() {
   }
 }
 
-if (location.pathname.includes("/index.html")) {
+if (location.pathname.includes("./index.html")) {
   randomMeals();
 }
 
