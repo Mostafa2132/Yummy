@@ -81,7 +81,7 @@ function displayCategory(arr) {
         "categoryName",
         allCat[i].querySelector(".inner h2").innerHTML
       );
-      location.pathname = "/displayCategoryMeals.html";    //-------------------->>>>>>>>>>
+      location.pathname = "../displayCategoryMeals.html";    //-------------------->>>>>>>>>>
       categoryMeals();
     });
   }
@@ -148,7 +148,7 @@ function displayCategoryMeals(arr) {
   for (let i = 0; i < meals.length; i++) {
     meals[i].addEventListener("click", () => {
       localStorage.setItem("mealId", meals[i].getAttribute("id"));
-      location.pathname = "/mealDetails.html";                    /// --------------------->>>>>>>>>
+      location.pathname = "../mealDetails.html";                    /// --------------------->>>>>>>>>
       // displayMealData()
     });
   }
@@ -257,7 +257,7 @@ function displayAreas(arr) {
         "areaName",
         allAreas[i].querySelector(".inner h1").innerHTML
       );
-      location.pathname = "/areasMeals.html";
+      location.pathname = "../areasMeals.html";
     });
   }
 }
@@ -539,7 +539,7 @@ function displayGradients(arr) {
         "allGradient",
         allgradient[i].querySelector(".gradient .inner h1").innerHTML
       );
-      location.pathname = "/gradientsMeals.html";  ///---------------------    >>>>>>>>      
+      location.pathname = "../gradientsMeals.html";  ///---------------------    >>>>>>>>      
     });
   }
 }
